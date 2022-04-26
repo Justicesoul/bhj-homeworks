@@ -16,9 +16,13 @@ const createDiv = (link) => {
 links.forEach((item) => {
   item.onclick = () => {
     const div = document.querySelector('div.tooltip');
-    createDiv(item);
     if (div) {
       div.remove();
+      if (item.title !== div.innerHTML) {
+        createDiv(item);
+      }
+    } else {
+      createDiv(item);
     }
     return false;
   };
